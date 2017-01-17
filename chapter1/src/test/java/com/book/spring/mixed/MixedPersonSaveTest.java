@@ -19,7 +19,7 @@ public class MixedPersonSaveTest {
         ApplicationContext context = new ClassPathXmlApplicationContext("classpath:spring/mixed-app-config.xml",
                 "classpath:spring/test-db-config.xml");
         PersonManager personManager = context.getBean("personManager", PersonManager.class);
-        int result = personManager.save(new Person("Vinh", "Nguyen", new Date()));
+        int result = personManager.save(new Person("Dang Quang Vinh", "Nguyen", new Date()));
         Assert.assertEquals(result, 1);
     }
 }
