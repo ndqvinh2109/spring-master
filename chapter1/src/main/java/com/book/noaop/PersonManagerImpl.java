@@ -6,21 +6,31 @@ import com.book.base.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.support.DefaultTransactionDefinition;
 
 /**
  * Created by Quang on 01/15/2017.
  */
 @Component(value = "personManager")
-@Transactional
 public class PersonManagerImpl implements PersonManager {
 
     @Autowired
-    @Qualifier("personRepository")
     PersonRepository personRepository;
+
+    @Autowired
+    PlatformTransactionManager transactionManager;
 
     @Override
     public int save(Person person) {
-        return personRepository.save(person);
+        TransactionDefinition transactionDefinition = new DefaultTransactionDefinition();
+        TransactionStatus status = transactionManager.getTransaction(transactionDefinition);
+        int result = personRepository.save(person);
+        transactionManager.commit(status);
+        return result;
     }
+
 }
