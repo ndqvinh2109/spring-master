@@ -1,6 +1,3 @@
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
 dependencies {
     compile misc.slf4jApi, misc.slf4jJcl, misc.logback,
             hibernate.ehcache, hibernate.em, hibernate.core, hibernate.validator,
