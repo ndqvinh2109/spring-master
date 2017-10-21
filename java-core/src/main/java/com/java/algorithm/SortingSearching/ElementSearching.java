@@ -1,5 +1,7 @@
 package com.java.algorithm.SortingSearching;
 
+import java.util.Arrays;
+
 public class ElementSearching {
 
     public static int search(int a[], int l, int u, int x) {
@@ -32,6 +34,7 @@ public class ElementSearching {
 
     public static void main(String[] args) {
         int[] array = new int[]{15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14};
+        Arrays.sort(array);
 
         System.out.print(search(array, 16));
 
