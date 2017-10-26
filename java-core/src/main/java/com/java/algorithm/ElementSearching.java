@@ -1,4 +1,4 @@
-package com.java.algorithm.SortingSearching;
+package com.java.algorithm;
 
 public class ElementSearching {
 
