@@ -43,6 +43,17 @@ public class Node<T extends Comparable<T>> {
         }
     }
 
+    public boolean contains(T value) {
+        if (value.compareTo(data) == 0) {
+            return true;
+        } else if (value.compareTo(data) < 0) {
+            return (left == null) ? false : left.contains(value);
+        } else {
+            return (right == null) ? false: right.contains(value);
+        }
+
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -55,5 +66,7 @@ public class Node<T extends Comparable<T>> {
 
         root.printInOrder();
     }
+
+
 
 }
