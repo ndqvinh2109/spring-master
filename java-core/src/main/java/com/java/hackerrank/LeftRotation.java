@@ -7,14 +7,12 @@ import java.util.Scanner;
  */
 public class LeftRotation {
 
-    public static int[] arrayLeftRotation(int[] a, int n, int k) {
+    public static int[] leftRotation(int[] arr, int n, int k) {
         int[] newArray = new int[n];
-
-        for (int i = 0; i < n; i++) {
-            int newIndex = (i + (n - k)) % n;
-            newArray[newIndex] = a[i];
+        for(int i = 0; i < n; i ++) {
+            int index = (i + (n - k)) % n;
+            newArray[i] = arr[index];
         }
-
         return newArray;
     }
 
@@ -29,7 +27,7 @@ public class LeftRotation {
         }
 
         int[] output = new int[n];
-        output = arrayLeftRotation(a, n, k);
+        output = leftRotation(a, n, k);
         for(int i = 0; i < n; i++)
             System.out.print(output[i] + " ");
 
