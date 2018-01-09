@@ -15,7 +15,6 @@ public class MakingAnagrams {
         Map<Character, Integer> occurenceMap = new HashMap<>();
         int count = 0;
 
-
         for(char firstC: first.toCharArray()) {
             if( !occurenceMap.containsKey(firstC) ) {
                 occurenceMap.put(firstC, 1);
@@ -26,20 +25,27 @@ public class MakingAnagrams {
 
         for(char secondC: second.toCharArray()) {
             if( !occurenceMap.containsKey(secondC) ) {
-                occurenceMap.put(secondC, 1);
+                count -=1;
             } else {
-                occurenceMap.put(secondC, occurenceMap.get(secondC) + 1);
+                occurenceMap.put(secondC, occurenceMap.get(secondC) - 1);
             }
         }
 
         for(Map.Entry<Character,Integer> entry: occurenceMap.entrySet()){
-            if(entry.getValue() == 1){
-                count += 1;
+            if(entry.getValue() != 0){
+                count += Math.abs(entry.getValue());
             }
         }
 
         return count;
     }
+
+    public static int numberNeeded2(String first, String second) {
+        int count = 0;
+
+        return count;
+    }
+
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
