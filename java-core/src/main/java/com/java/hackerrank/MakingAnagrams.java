@@ -3,6 +3,7 @@ package com.java.hackerrank;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.stream.IntStream;
 
 public class MakingAnagrams {
 
@@ -25,7 +26,7 @@ public class MakingAnagrams {
 
         for(char secondC: second.toCharArray()) {
             if( !occurenceMap.containsKey(secondC) ) {
-                count -=1;
+                count--;
             } else {
                 occurenceMap.put(secondC, occurenceMap.get(secondC) - 1);
             }
@@ -55,12 +56,19 @@ public class MakingAnagrams {
         return result;
     }
 
+    public static int numberNeededJava8(String first, String second) {
+        int[] letters = new int[26];
+        first.chars().forEach(c -> { letters[c - 'a']++; });
+        second.chars().forEach(c -> { letters[c - 'a']--;});
+        return IntStream.of(letters).map(Math::abs).sum();
+    }
+
 
 
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         String a = in.next();
         String b = in.next();
-        System.out.println(numberNeeded2(a, b));
+        System.out.println(numberNeededJava8(a, b));
     }
 }

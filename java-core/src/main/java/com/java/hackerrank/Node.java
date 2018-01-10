@@ -10,20 +10,20 @@ public class Node<T extends Comparable<T>> {
 
     public Node(T data) {
         this.data = data;
-        left = null;
-        right = null;
+        this.left = null;
+        this.right = null;
     }
 
     public void insert(T value) {
         if (value.compareTo(this.data) <= 0) {
             if (left == null) {
-                left = new Node(value);
+                this.left = new Node(value);
             } else {
                 left.insert(value);
             }
         } else {
             if (right == null) {
-                right = new Node(value);
+                this.right = new Node(value);
             } else {
                 right.insert(value);
             }
@@ -47,9 +47,9 @@ public class Node<T extends Comparable<T>> {
         if (value.compareTo(data) == 0) {
             return true;
         } else if (value.compareTo(data) < 0) {
-            return (left == null) ? false : left.contains(value);
+            return (this.left == null) ? false : this.left.contains(value);
         } else {
-            return (right == null) ? false: right.contains(value);
+            return (this.right == null) ? false: this.right.contains(value);
         }
 
     }
