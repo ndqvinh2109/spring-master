@@ -15,15 +15,15 @@ public class Node<T extends Comparable<T>> {
     }
 
     public void insert(T value) {
-        if (value.compareTo(this.data) <= 0) {
-            if (left == null) {
-                this.left = new Node(value);
+        if(value.compareTo(this.data) <= 0) {
+            if(this.left == null) {
+                this.left = new Node<>(value);
             } else {
                 left.insert(value);
             }
         } else {
-            if (right == null) {
-                this.right = new Node(value);
+            if(this.right == null) {
+                this.right = new Node<>(value);
             } else {
                 right.insert(value);
             }
